@@ -1,0 +1,755 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/projects": {
+      "get": {
+        "operationId": "ProjectsController_findAll",
+        "summary": "Obtener todos los proyectos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de proyectos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "projects"
+        ]
+      },
+      "post": {
+        "operationId": "ProjectsController_create",
+        "summary": "Crear un nuevo proyecto",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Proyecto creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "projects"
+        ]
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "operationId": "ProjectsController_findOne",
+        "summary": "Obtener un proyecto por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Proyecto encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Proyecto no encontrado"
+          }
+        },
+        "tags": [
+          "projects"
+        ]
+      },
+      "put": {
+        "operationId": "ProjectsController_update",
+        "summary": "Actualizar un proyecto",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Proyecto actualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Proyecto no encontrado"
+          }
+        },
+        "tags": [
+          "projects"
+        ]
+      },
+      "delete": {
+        "operationId": "ProjectsController_delete",
+        "summary": "Eliminar un proyecto",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Proyecto eliminado"
+          },
+          "404": {
+            "description": "Proyecto no encontrado"
+          }
+        },
+        "tags": [
+          "projects"
+        ]
+      }
+    },
+    "/content-types": {
+      "get": {
+        "operationId": "ContentTypesController_findAll",
+        "summary": "Obtener todos los tipos de contenido",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de tipos de contenido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContentType"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "content-types"
+        ]
+      },
+      "post": {
+        "operationId": "ContentTypesController_create",
+        "summary": "Crear un nuevo tipo de contenido",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateContentTypeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tipo de contenido creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentType"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "content-types"
+        ]
+      }
+    },
+    "/content-types/{id}": {
+      "get": {
+        "operationId": "ContentTypesController_findOne",
+        "summary": "Obtener un tipo de contenido por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tipo de contenido encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tipo de contenido no encontrado"
+          }
+        },
+        "tags": [
+          "content-types"
+        ]
+      },
+      "put": {
+        "operationId": "ContentTypesController_update",
+        "summary": "Actualizar un tipo de contenido",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateContentTypeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tipo de contenido actualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tipo de contenido no encontrado"
+          }
+        },
+        "tags": [
+          "content-types"
+        ]
+      },
+      "delete": {
+        "operationId": "ContentTypesController_delete",
+        "summary": "Eliminar un tipo de contenido",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tipo de contenido eliminado"
+          },
+          "404": {
+            "description": "Tipo de contenido no encontrado"
+          }
+        },
+        "tags": [
+          "content-types"
+        ]
+      }
+    },
+    "/components": {
+      "get": {
+        "operationId": "ComponentsController_findAll",
+        "summary": "Obtener todos los componentes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de componentes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "components"
+        ]
+      },
+      "post": {
+        "operationId": "ComponentsController_create",
+        "summary": "Crear un nuevo componente",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateComponentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Componente creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "components"
+        ]
+      }
+    },
+    "/components/{id}": {
+      "get": {
+        "operationId": "ComponentsController_findOne",
+        "summary": "Obtener un componente por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Componente encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Componente no encontrado"
+          }
+        },
+        "tags": [
+          "components"
+        ]
+      },
+      "put": {
+        "operationId": "ComponentsController_update",
+        "summary": "Actualizar un componente",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateComponentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Componente actualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Componente no encontrado"
+          }
+        },
+        "tags": [
+          "components"
+        ]
+      },
+      "delete": {
+        "operationId": "ComponentsController_delete",
+        "summary": "Eliminar un componente",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Componente eliminado"
+          },
+          "404": {
+            "description": "Componente no encontrado"
+          }
+        },
+        "tags": [
+          "components"
+        ]
+      }
+    },
+    "/fields": {
+      "post": {
+        "operationId": "FieldsController_createField",
+        "summary": "Crear un nuevo campo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFieldDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Campo creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Field"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "fields"
+        ]
+      }
+    },
+    "/fields/{id}/value": {
+      "get": {
+        "operationId": "FieldsController_getFieldValue",
+        "summary": "Obtener el valor de un campo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valor del campo obtenido"
+          },
+          "404": {
+            "description": "Campo no encontrado"
+          }
+        },
+        "tags": [
+          "fields"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "CMS API",
+    "description": "API para el sistema de gestión de contenido",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "projects",
+      "description": "Gestión de proyectos"
+    },
+    {
+      "name": "content-types",
+      "description": "Gestión de tipos de contenido"
+    },
+    {
+      "name": "components",
+      "description": "Gestión de componentes"
+    },
+    {
+      "name": "fields",
+      "description": "Gestión de campos"
+    }
+  ],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "ContentType": {
+        "type": "object",
+        "properties": {}
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "ID único del proyecto"
+          },
+          "name": {
+            "type": "string",
+            "description": "Nombre del proyecto"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del proyecto"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Fecha de creación"
+          },
+          "contentTypes": {
+            "description": "Tipos de contenido asociados al proyecto",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentType"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "created_at",
+          "contentTypes"
+        ]
+      },
+      "CreateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del proyecto"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del proyecto"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "UpdateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del proyecto"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del proyecto"
+          }
+        }
+      },
+      "CreateContentTypeDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del tipo de contenido"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del tipo de contenido"
+          },
+          "is_repeatable": {
+            "type": "boolean",
+            "description": "Indica si el tipo de contenido es repetible"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "ID del proyecto al que pertenece"
+          }
+        },
+        "required": [
+          "name",
+          "is_repeatable",
+          "project_id"
+        ]
+      },
+      "UpdateContentTypeDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del tipo de contenido"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del tipo de contenido"
+          },
+          "is_repeatable": {
+            "type": "boolean",
+            "description": "Indica si el tipo de contenido es repetible"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "ID del proyecto al que pertenece"
+          }
+        }
+      },
+      "Component": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateComponentDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del componente"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del componente"
+          },
+          "content_type_id": {
+            "type": "number",
+            "description": "ID del tipo de contenido al que pertenece"
+          }
+        },
+        "required": [
+          "name",
+          "content_type_id"
+        ]
+      },
+      "UpdateComponentDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del componente"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción del componente"
+          },
+          "content_type_id": {
+            "type": "number",
+            "description": "ID del tipo de contenido al que pertenece"
+          }
+        }
+      },
+      "CreateFieldDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del campo"
+          },
+          "field_data_type": {
+            "type": "string",
+            "description": "Tipo de dato del campo"
+          },
+          "component_id": {
+            "type": "number",
+            "description": "ID del componente al que pertenece"
+          },
+          "field_type_id": {
+            "type": "number",
+            "description": "ID del tipo de campo"
+          },
+          "value": {
+            "type": "object",
+            "description": "Valor del campo"
+          }
+        },
+        "required": [
+          "name",
+          "field_data_type",
+          "component_id",
+          "field_type_id",
+          "value"
+        ]
+      },
+      "Field": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}
